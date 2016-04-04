@@ -4,6 +4,7 @@
   "description": "Examples of dealing with callback hell",
   "main": "app.js",
   "scripts": {
+    "start": "node ./bin/index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,9 +18,14 @@
   },
   "homepage": "https://github.com/Gustu/Node-Asynchronous-Examples#readme",
   "dependencies": {
+    "babel-polyfill": "^6.7.2",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-register": "^6.5.2",
     "body-parser": "^1.15.0",
+    "config": "^1.19.0",
     "express": "^4.13.4",
     "mongoose": "^4.4.11",
-    "morgan": "^1.7.0"
+    "morgan": "^1.7.0",
+    "winston": "^2.2.0"
   }
 }
