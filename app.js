@@ -17,6 +17,6 @@ app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-app.use('/api', routes());
+app.use('/api', routes);
 
 module.exports = app;
