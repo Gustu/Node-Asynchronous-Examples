@@ -13,6 +13,18 @@ function getTodos(req, res) {
     });
 }
 
+function getTodo(req, res) {
+  _.wrapCallback(Todo.findOne.bind(Todo))({
+    _id : req.params.id
+  })
+    .errors((err) => {
+      res.send(err);
+    })
+    .apply((todos) => {
+      res.json(todos);
+    });
+}
+
 function createTodo(req, res) {
   _.wrapCallback(Todo.create.bind(Todo))({
       text: req.body.text,
@@ -53,6 +65,7 @@ function updateTodo(req, res) {
 }
 
 router.get('/', getTodos);
+router.get('/:id', getTodo);
 router.post('/', createTodo);
 router.delete('/:id', deleteTodo);
 router.put('/:id', updateTodo);

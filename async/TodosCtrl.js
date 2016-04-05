@@ -12,6 +12,15 @@ function getTodos(req, res) {
   });
 }
 
+function getTodo(req, res) {
+  async.waterfall([
+    (onFound) => {
+      Todo.findOne({_id: req.params.id}, onFound);
+    }], (err, todo) => {
+    err ? res.send(err) : res.json(todo);
+  });
+}
+
 function createTodo(req, res) {
   async.waterfall([
     (onCreate) => {
@@ -57,6 +66,7 @@ function updateTodo(req, res) {
 }
 
 router.get('/', getTodos);
+router.get('/:id', getTodo);
 router.post('/', createTodo);
 router.delete('/:id', deleteTodo);
 router.put('/:id', updateTodo);

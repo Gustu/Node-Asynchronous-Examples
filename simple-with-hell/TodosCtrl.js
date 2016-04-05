@@ -10,6 +10,14 @@ function getTodos(req, res) {
   });
 }
 
+function getTodo(req, res) {
+  Todo.findOne({_id: req.params.id}, (err, todo) => {
+    if (err)
+      return res.send(err);
+    res.json(todo);
+  });
+}
+
 function createTodo(req, res) {
   Todo.create({
     text: req.body.text,
@@ -46,6 +54,7 @@ function updateTodo(req, res) {
 }
 
 router.get('/', getTodos);
+router.get('/:id', getTodo);
 router.post('/', createTodo);
 router.delete('/:id', deleteTodo);
 router.put('/:id', updateTodo);
