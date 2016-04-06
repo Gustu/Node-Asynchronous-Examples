@@ -1,9 +1,16 @@
-var scotchTodo = angular.module('todo-todo-todo', []);
+var scotchTodo = angular.module('todo-todo-todo', ['ngCookies']);
 
-function mainController($scope, $http) {
+function mainController($scope, $http, $cookies) {
+  $scope.cookies = $cookies;
+
   $scope.formData = {};
-  $scope.method = 'hell';
+  $scope.method = $scope.cookies.method || 'hell';
+  $scope.cookies.method = $scope.method;
   $scope.options = ['hell', 'promises', 'async', 'highland'];
+
+  $scope.$watch('method', function (method) {
+    $scope.cookies.method = method;
+  });
 
   function getTodos() {
     $http.get('/api/' + $scope.method + '/todos')
