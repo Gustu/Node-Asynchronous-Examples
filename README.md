@@ -5,6 +5,8 @@ Examples of dealing with callback hell with Promise, Async and Highland.js.
 
 ``` npm install ``` and ``` node ./bin/index ```
 
+You can view app at http://localhost:3000
+
 ## API
 * /api/hell/todos
 * /api/promises/todos
