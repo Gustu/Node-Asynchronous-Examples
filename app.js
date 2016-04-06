@@ -16,6 +16,7 @@ mongoose.connect(config.get('dbConfig.host'));
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+app.use(express.static('./public'));
 
 app.use('/api', routes);
 
